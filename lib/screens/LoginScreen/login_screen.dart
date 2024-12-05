@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
+  static const String routeName = "/login";
   final controller = Get.put(LoginController());
 
   LoginScreen({super.key});
@@ -28,6 +29,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20),
             TextField(
               controller: controller.passwordController,
+              obscureText: true,
               decoration: const InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(),

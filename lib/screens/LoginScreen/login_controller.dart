@@ -1,3 +1,4 @@
+import 'package:delivery_app/screens/HomeScreen/home_screen.dart';
 import 'package:delivery_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,6 @@ class LoginController extends GetxController {
         await authService.signInUsingEmailAndPassword(email, password);
     loading.value = false;
 
-    if (hasLoggedIn) Get.offAndToNamed('/');
+    if (hasLoggedIn) Get.offAndToNamed(HomeScreen.routeName);
   }
 }

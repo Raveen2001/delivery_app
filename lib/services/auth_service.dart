@@ -7,6 +7,8 @@ class AuthService extends GetxService {
   // Observables
   var firebaseUser = Rxn<User?>();
 
+  User? get user => firebaseUser.value;
+
   var verificationId = Rxn<String>();
 
   @override

@@ -1,5 +1,6 @@
 import 'package:delivery_app/screens/HomeScreen/home_screen.dart';
 import 'package:delivery_app/screens/LoginScreen/login_screen.dart';
+import 'package:delivery_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
@@ -22,18 +23,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Delivery A',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      initialRoute: '/login',
+      initialRoute: SplashScreen.routeName,
       getPages: [
+        GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
         GetPage(
-          name: '/',
+          name: HomeScreen.routeName,
           page: () => const HomeScreen(),
         ),
-        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
       ],
     );
   }
