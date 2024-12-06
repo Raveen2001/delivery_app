@@ -1,3 +1,4 @@
+import 'package:delivery_app/screens/HomeScreen/home_binding.dart';
 import 'package:delivery_app/screens/HomeScreen/home_screen.dart';
 import 'package:delivery_app/screens/LoginScreen/login_screen.dart';
 import 'package:delivery_app/screens/splash_screen.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
         GetPage(
           name: HomeScreen.routeName,
-          page: () => const HomeScreen(),
+          page: () => HomeScreen(),
+          binding: HomeBinding(),
         ),
         GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
       ],
