@@ -10,7 +10,7 @@ class HomeController extends GetxController {
   final showFloatingActionButton = true.obs;
 
   final screens = [
-    const OrderScreen(),
+    OrderScreen(),
     const DeliveryScreen(),
     const CustomerScreen(),
     ProfileScreen(),
@@ -28,6 +28,10 @@ class HomeController extends GetxController {
   void onAddClicked() {
     if (selectedIndex.value == Screens.ORDER) {
       Get.toNamed("/add-edit-order");
+    }
+
+    if (selectedIndex.value == Screens.CUSTOMER) {
+      Get.toNamed("/add-edit-customer");
     }
   }
 }

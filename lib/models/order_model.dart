@@ -18,7 +18,7 @@ class AppOrder {
         billAmount = json['billAmount'],
         billNumber = json['id'],
         customerId = json['customerId'],
-        billDate = DateTime.parse(json['billDate']);
+        billDate = json['billDate'].toDate();
 
   Map<String, dynamic> toJson() => {
         'billImages': billImages,

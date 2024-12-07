@@ -1,3 +1,4 @@
+import 'package:delivery_app/screens/AddEditCustomerScreen/add_edit_customer_screen.dart';
 import 'package:delivery_app/screens/AddEditOrderScreen/add_edit_order_screen.dart';
 import 'package:delivery_app/screens/HomeScreen/home_binding.dart';
 import 'package:delivery_app/screens/HomeScreen/home_screen.dart';
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: AddEditOrderScreen.routeName,
             page: () => AddEditOrderScreen()),
+        GetPage(
+            name: AddEditCustomerScreen.routeName,
+            page: () => AddEditCustomerScreen())
       ],
     );
   }

@@ -6,6 +6,26 @@ class OrderService extends GetxService {
   final _firestore = FirebaseFirestore.instance;
   final _ordersCollection = 'orders';
 
+  final _orders = <AppOrder>[].obs;
+
+  List<AppOrder> get orders => _orders;
+
+  @override
+  void onInit() {
+    super.onInit();
+    _orders.bindStream(getOrdersStream());
+  }
+
+  Stream<List<AppOrder>> getOrdersStream() {
+    final twoDaysAgo = DateTime.now().subtract(const Duration(days: 2));
+    return _firestore
+        .collection(_ordersCollection)
+        .where('billDate', isGreaterThanOrEqualTo: twoDaysAgo)
+        .snapshots()
+        .map((snapshot) =>
+            snapshot.docs.map((doc) => AppOrder.fromJson(doc.data())).toList());
+  }
+
   // Get the next bill number (with concurrency-safe transaction)
   Future<int> getNextBillNumber() async {
     return _firestore.runTransaction((transaction) async {
