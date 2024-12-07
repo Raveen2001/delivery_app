@@ -8,8 +8,8 @@ class AddEditCustomerController extends GetxController {
   final firestore = FirebaseFirestore.instance;
   final customerService = Get.find<CustomerService>();
 
-  final inputCustomerPhone = Get.parameters['phone'];
-  final isEditing = (Get.parameters['isEdit'] ?? false) as bool;
+  final inputCustomerPhone = Get.arguments['phone'];
+  final isEditing = (Get.arguments['isEdit'] ?? false) as bool;
 
   // Controllers for form fields
   final formKey = GlobalKey<FormState>();
