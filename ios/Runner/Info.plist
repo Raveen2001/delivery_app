@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to access photos to select bill images while creating order</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to click bill images while creating order</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need to record video of the bill</string>
 </dict>
 </plist>

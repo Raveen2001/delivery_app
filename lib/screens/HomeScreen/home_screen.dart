@@ -41,8 +41,10 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton:
-          FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+      floatingActionButton: Obx(() => controller.showFloatingActionButton.value
+          ? FloatingActionButton(
+              onPressed: controller.onAddClicked, child: const Icon(Icons.add))
+          : Container()),
     );
   }
 }

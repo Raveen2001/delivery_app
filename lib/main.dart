@@ -1,3 +1,4 @@
+import 'package:delivery_app/screens/AddEditOrderScreen/add_edit_order_screen.dart';
 import 'package:delivery_app/screens/HomeScreen/home_binding.dart';
 import 'package:delivery_app/screens/HomeScreen/home_screen.dart';
 import 'package:delivery_app/screens/LoginScreen/login_screen.dart';
@@ -32,12 +33,15 @@ class MyApp extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       getPages: [
         GetPage(name: SplashScreen.routeName, page: () => const SplashScreen()),
+        GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
         GetPage(
           name: HomeScreen.routeName,
           page: () => HomeScreen(),
           binding: HomeBinding(),
         ),
-        GetPage(name: LoginScreen.routeName, page: () => LoginScreen()),
+        GetPage(
+            name: AddEditOrderScreen.routeName,
+            page: () => AddEditOrderScreen()),
       ],
     );
   }
