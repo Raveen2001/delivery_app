@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:delivery_app/models/customer_model.dart';
 import 'package:delivery_app/services/order_service.dart';
 import 'package:delivery_app/utils/date.dart';
 import 'package:delivery_app/utils/files.dart';
@@ -21,10 +22,11 @@ class AddEditOrderController extends GetxController {
   // Controllers for form fields
   final formKey = GlobalKey<FormState>();
   final billAmountController = TextEditingController();
-  final customerIdController = TextEditingController();
   var billDate = LONG_DATE_FORMAT.format(DateTime.now()); // For date input
 
   final selectedImages = Rx<List<File>>([]);
+  final selectedCustomer = Rx<AppCustomer?>(null);
+
   var isLoading = false.obs;
 
   @override
@@ -47,6 +49,10 @@ class AddEditOrderController extends GetxController {
   Future<void> onSubmit() async {
     if (isLoading.value) return;
     if (!formKey.currentState!.validate()) return;
+    if (selectedCustomer.value == null) {
+      Get.snackbar("Error", "Please select a customer");
+      return;
+    }
 
     if (selectedImages.value.isEmpty) {
       Get.snackbar("Error", "Please select an image");
@@ -71,7 +77,7 @@ class AddEditOrderController extends GetxController {
       billImages: uploadedImageUrls,
       billAmount: int.parse(billAmountController.text),
       billNumber: billNumber,
-      customerId: customerIdController.text,
+      customerPhone: selectedCustomer.value!.phone,
       billDate: LONG_DATE_FORMAT.parse(billDate),
     );
 
@@ -103,7 +109,6 @@ class AddEditOrderController extends GetxController {
   // Initialize fields for editing
   void initializeFields(AppOrder order) {
     billAmountController.text = order.billAmount.toString();
-    customerIdController.text = order.customerId;
     billDate = order.billDate.toIso8601String();
     // selectedImages.value =  // Clear selected image
   }
@@ -113,5 +118,9 @@ class AddEditOrderController extends GetxController {
 
     // Update the UI
     selectedImages.refresh();
+  }
+
+  void onCustomerChange(AppCustomer? customer) {
+    selectedCustomer.value = customer;
   }
 }

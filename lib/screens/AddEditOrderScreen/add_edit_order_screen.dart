@@ -1,6 +1,6 @@
 import 'package:delivery_app/screens/AddEditOrderScreen/add_edit_order_controller.dart';
+import 'package:delivery_app/widgets/customer_dropdown.dart';
 import 'package:delivery_app/widgets/file_carousel_slider.dart';
-import 'package:delivery_app/widgets/network_carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -42,14 +42,13 @@ class AddEditOrderScreen extends StatelessWidget {
                     if (!value.isNumericOnly) {
                       return "Please enter a valid number";
                     }
+                    return null;
                   }),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: controller.customerIdController,
-                decoration: const InputDecoration(labelText: "Customer ID"),
-                validator: (value) =>
-                    value!.isEmpty ? "Please enter customer ID" : null,
-              ),
+              Obx(() => CustomerDropdown(
+                    selectedItem: controller.selectedCustomer.value,
+                    onChanged: controller.onCustomerChange,
+                  )),
               const SizedBox(height: 26),
               Obx(() => controller.selectedImages.value.isEmpty
                   ? const Text("No image selected")

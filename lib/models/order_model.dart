@@ -2,14 +2,14 @@ class AppOrder {
   final List<String> billImages;
   final int billAmount;
   final int billNumber;
-  final String customerId;
+  final String customerPhone;
   final DateTime billDate;
 
   AppOrder({
     required this.billImages,
     required this.billAmount,
     required this.billNumber,
-    required this.customerId,
+    required this.customerPhone,
     required this.billDate,
   });
 
@@ -17,14 +17,14 @@ class AppOrder {
       : billImages = List<String>.from(json['billImages']),
         billAmount = json['billAmount'],
         billNumber = json['id'],
-        customerId = json['customerId'],
+        customerPhone = json['customerPhone'],
         billDate = json['billDate'].toDate();
 
   Map<String, dynamic> toJson() => {
         'billImages': billImages,
         'billAmount': billAmount,
         'id': billNumber,
-        'customerId': customerId,
+        'customerPhone': customerPhone,
         'billDate': billDate,
       };
 }

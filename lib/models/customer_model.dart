@@ -13,6 +13,11 @@ class AppCustomer {
     required this.createdAt,
   });
 
+  @override
+  String toString() {
+    return "$name (+91 $phone)";
+  }
+
   AppCustomer.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         phone = json['phone'],

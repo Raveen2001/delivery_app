@@ -11,7 +11,7 @@ class HomeController extends GetxController {
 
   final screens = [
     OrderScreen(),
-    DeliveryScreen(),
+    const DeliveryScreen(),
     CustomerScreen(),
     ProfileScreen(),
   ];

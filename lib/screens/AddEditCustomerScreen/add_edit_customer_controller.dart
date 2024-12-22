@@ -64,7 +64,7 @@ class AddEditCustomerController extends GetxController {
       await customerService.addCustomer(customer);
     }
 
-    Get.back(); // Navigate back
+    Get.back(result: customer); // Navigate back
 
     Get.snackbar("Success",
         "Customer ${nameTextController.text} ${isEditing ? 'updated' : 'added'}");
