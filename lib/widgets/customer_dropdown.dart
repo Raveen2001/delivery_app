@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomerDropdown extends StatelessWidget {
-  AppCustomer? selectedItem;
-  void Function(AppCustomer?)? onChanged;
+  final AppCustomer? selectedItem;
+  final void Function(AppCustomer?)? onChanged;
   CustomerDropdown({super.key, this.selectedItem, this.onChanged});
 
   final customerService = Get.find<CustomerService>();

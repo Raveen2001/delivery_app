@@ -28,6 +28,7 @@ class AddEditOrderController extends GetxController {
   final selectedCustomer = Rx<AppCustomer?>(null);
 
   var isLoading = false.obs;
+  var orderStatus = OrderStatus.pending.obs;
 
   @override
   void onInit() {
@@ -79,6 +80,9 @@ class AddEditOrderController extends GetxController {
       billNumber: billNumber,
       customerPhone: selectedCustomer.value!.phone,
       billDate: LONG_DATE_FORMAT.parse(billDate),
+      customerAddress: selectedCustomer.value!.address,
+      customerName: selectedCustomer.value!.name,
+      status: OrderStatus.pending,
     );
 
     if (isEditing) {
@@ -110,6 +114,7 @@ class AddEditOrderController extends GetxController {
   void initializeFields(AppOrder order) {
     billAmountController.text = order.billAmount.toString();
     billDate = order.billDate.toIso8601String();
+    orderStatus.value = order.status;
     // selectedImages.value =  // Clear selected image
   }
 

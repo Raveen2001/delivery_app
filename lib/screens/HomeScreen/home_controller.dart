@@ -1,7 +1,6 @@
 import 'package:delivery_app/screens/CustomerScreen/customer_screen.dart';
-import 'package:delivery_app/screens/DeliveryScreen/delivery_screen.dart';
 import 'package:delivery_app/screens/HomeScreen/models.dart';
-import 'package:delivery_app/screens/OrderScreen/order_screen.dart';
+import 'package:delivery_app/screens/OrdersScreen/orders_screen.dart';
 import 'package:delivery_app/screens/ProfileScreen/profile_screen.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +10,6 @@ class HomeController extends GetxController {
 
   final screens = [
     OrderScreen(),
-    const DeliveryScreen(),
     CustomerScreen(),
     ProfileScreen(),
   ];
@@ -22,7 +20,7 @@ class HomeController extends GetxController {
     selectedIndex.value = index;
 
     showFloatingActionButton.value =
-        [Screens.ORDER, Screens.DELIVERY, Screens.CUSTOMER].contains(index);
+        [Screens.ORDER, Screens.CUSTOMER].contains(index);
   }
 
   void onAddClicked() {

@@ -10,6 +10,19 @@ class OrderService extends GetxService {
 
   List<AppOrder> get orders => _orders;
 
+  List<AppOrder> get pendingOrders =>
+      _orders.where((order) => order.status == OrderStatus.pending).toList();
+
+  List<AppOrder> get deliveredOrders =>
+      _orders.where((order) => order.status == OrderStatus.delivered).toList();
+
+  List<AppOrder> get cancelledOrders =>
+      _orders.where((order) => order.status == OrderStatus.cancelled).toList();
+
+  List<AppOrder> get outForDeliveryOrders => _orders
+      .where((order) => order.status == OrderStatus.outForDelivery)
+      .toList();
+
   @override
   void onInit() {
     super.onInit();
@@ -40,10 +53,9 @@ class OrderService extends GetxService {
   }
 
   Future addOrder(AppOrder order) async {
-    final billNumber = await getNextBillNumber();
     await _firestore
         .collection(_ordersCollection)
-        .doc(billNumber.toString())
+        .doc(order.billNumber.toString())
         .set(order.toJson());
   }
 

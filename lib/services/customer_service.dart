@@ -53,4 +53,8 @@ class CustomerService extends GetxService {
         await _firestore.collection(_customersCollection).doc(phone).get();
     return AppCustomer.fromJson(doc.data()!);
   }
+
+  AppCustomer findCustomerByPhone(String phone) {
+    return _customers.firstWhere((customer) => customer.phone == phone);
+  }
 }

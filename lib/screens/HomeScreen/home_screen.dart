@@ -28,9 +28,6 @@ class HomeScreen extends StatelessWidget {
               label: "Orders",
             ),
             NavigationDestination(
-                icon: Icon(Icons.local_shipping_outlined),
-                label: "Out For Delivery"),
-            NavigationDestination(
               icon: Icon(Icons.group_outlined),
               label: "Customers",
             ),

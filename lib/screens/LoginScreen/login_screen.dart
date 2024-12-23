@@ -13,43 +13,45 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Login")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            SvgPicture.asset(
-              "assets/icons/logo.svg",
-              height: 400,
-            ),
-            TextField(
-              controller: controller.emailController,
-              decoration: const InputDecoration(
-                  labelText: "Email", border: OutlineInputBorder()),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: controller.passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                "assets/icons/logo.svg",
+                height: 400,
               ),
-            ),
-            const SizedBox(height: 20),
-            Obx(() => Text(controller.validationMsg.value,
-                style: const TextStyle(color: Colors.red))),
-            const SizedBox(height: 40),
-            Obx(() => ElevatedButton(
-                  onPressed: controller.handleLogin,
-                  child: controller.loading.value
-                      ? const SizedBox(
-                          height: 25,
-                          width: 25,
-                          child: CircularProgressIndicator(),
-                        )
-                      : const Text("Login"),
-                )),
-          ],
+              TextField(
+                controller: controller.emailController,
+                decoration: const InputDecoration(
+                    labelText: "Email", border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: controller.passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: "Password",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Obx(() => Text(controller.validationMsg.value,
+                  style: const TextStyle(color: Colors.red))),
+              const SizedBox(height: 40),
+              Obx(() => ElevatedButton(
+                    onPressed: controller.handleLogin,
+                    child: controller.loading.value
+                        ? const SizedBox(
+                            height: 25,
+                            width: 25,
+                            child: CircularProgressIndicator(),
+                          )
+                        : const Text("Login"),
+                  )),
+            ],
+          ),
         ),
       ),
     );
